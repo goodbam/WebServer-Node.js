@@ -1,6 +1,7 @@
 # Git에 업로드 하지 않을 폴더 및 파일
 
 # 폴더
-/node_modules
+# 모든 경로의 node_modules라는 폴더를 추적하지 않겠다. 대신 .gitignore라는 파일 최상의 폴더에 있어야한다.
+**/node_modules 
 
 # 파일
