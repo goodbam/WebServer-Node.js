@@ -1,5 +1,6 @@
 "use strict";
 
+const User = require("../../models/User");
 const UserStorage = require("../../models/UserStorage");
 
 const output = {
@@ -13,25 +14,9 @@ const output = {
 
 const process = {
   login: (req, res) => {
-    const id = req.body.id;
-    const psword = req.body.psword;
-    console.log("home.controller->process.login : ", id, psword);
+    const user = new User(req.body);
+    const response = user.login();
 
-    const userStorage = new UserStorage();
-    const users = userStorage.getUsers("id", "psword");
-
-    const response = {};
-    if (users.id.includes(id)) {
-      const idx = users.id.indexOf(id);
-
-      if (users.psword[idx] === psword) {
-        response.success = true;
-        return res.json(response);
-      }
-    }
-
-    response.success = false;
-    response.msg = "로그인 실패";
     return res.json(response);
   },
 };

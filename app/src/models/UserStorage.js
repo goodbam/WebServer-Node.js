@@ -19,6 +19,22 @@ class UserStorage {
 
     return newUsers;
   }
+
+  /** SELECT * FROM users WHERE id = {id} */
+  getUserInfo(id) {
+    // User 테이블에 모든 정보를 가져옴
+    const users = this.#users;
+    // 매개 변수 id 값을 통해 User 테이블에서 해당 id를 찾으면 그 id에 인덱스 값을 반환
+    const idx = users.id.indexOf(id);
+    // User 테이블에 key 값을 List로 만듬 => [id, psword, name]
+    const userKeys = Object.keys(users);
+    const userInfo = userKeys.reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {});
+
+    return userInfo;
+  }
 }
 
 module.exports = UserStorage;
