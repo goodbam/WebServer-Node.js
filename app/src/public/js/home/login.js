@@ -21,8 +21,14 @@ function login() {
     },
     body: JSON.stringify(req), // Type 변환 : Object -> String
   })
+    .then((res) => res.json())
     .then((res) => {
-      res.json();
+      console.log(res);
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
     })
-    .then(console.log); // .then((res) => {console.log(res)})와 같음
+    .catch((err) => console.err(err));
 }
