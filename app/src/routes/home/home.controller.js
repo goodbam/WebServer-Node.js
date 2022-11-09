@@ -19,6 +19,13 @@ const process = {
 
     return res.json(response);
   },
+
+  singUp: (req, res) => {
+    const user = new User(req.body);
+    const response = user.singUp();
+
+    return res.json(response);
+  },
 };
 
 module.exports = {

@@ -8,8 +8,8 @@ class User {
   }
 
   login() {
-    const body = this.body;
     const userStorage = new UserStorage();
+    const body = this.body;
     const { id, psword } = userStorage.getUserInfo(body.id);
 
     if (id) {
@@ -19,6 +19,15 @@ class User {
       return { success: false, msg: "비밀번호가 틀렸습니다." };
     }
     return { success: false, msg: "존재하지 않는 아이디입니다." };
+  }
+
+  singUp() {
+    const userStorage = new UserStorage();
+    const body = this.body;
+
+    const response = userStorage.save(body);
+
+    return response;
   }
 }
 
