@@ -20,5 +20,9 @@ function login() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(req), // Type 변환 : Object -> String
-  });
+  })
+    .then((res) => {
+      res.json();
+    })
+    .then(console.log); // .then((res) => {console.log(res)})와 같음
 }
