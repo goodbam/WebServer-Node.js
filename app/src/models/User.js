@@ -7,10 +7,10 @@ class User {
     this.body = body;
   }
 
-  login() {
+  async login() {
     const userStorage = new UserStorage();
     const body = this.body;
-    const { id, psword } = userStorage.getUserInfo(body.id);
+    const { id, psword } = await userStorage.getUserInfo(body.id);
 
     if (id) {
       if (id === body.id && psword === body.psword) {
@@ -21,13 +21,16 @@ class User {
     return { success: false, msg: "존재하지 않는 아이디입니다." };
   }
 
-  singUp() {
+  async singUp() {
     const userStorage = new UserStorage();
     const body = this.body;
-
-    const response = userStorage.save(body);
-
-    return response;
+    try {
+      const response = await userStorage.save(body);
+      console.log(response);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
   }
 }
 
