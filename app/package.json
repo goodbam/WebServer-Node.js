@@ -78,7 +78,9 @@
     "type-is": "^1.6.18",
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
-    "vary": "^1.1.2"
+    "vary": "^1.1.2",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "scripts": {
     "start": "nodemon ./bin/www.js",
