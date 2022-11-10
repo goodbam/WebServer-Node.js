@@ -2,7 +2,7 @@
 
 //** Import */
 const app = require("../app");
-const PORT = 3000;
+const PORT = process.env.SERVER_PORT;
 
 app.listen(PORT, () => {
   console.log("www : 서버 가동");
