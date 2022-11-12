@@ -6,11 +6,11 @@ class UserStorage {
   /** SELECT * FROM users WHERE id = {id} */
   async getUserInfo(id) {
     return new Promise((resolve, reject) => {
-      const sql = "SELECT * FROM test_user WHERE Username = ?;";
+      const sql = "SELECT * FROM test_user1 WHERE Username = ?;";
 
       db.query(sql, [id], (err, data) => {
         if (err) reject(`${err}`);
-        resolve(data[0]);
+        else resolve(data[0]);
       });
     });
   }
@@ -22,7 +22,7 @@ class UserStorage {
 
       db.query(sql, [userInfo.id, userInfo.psword], (err) => {
         if (err) reject(`${err}`);
-        resolve({ success: true });
+        else resolve({ success: true });
       });
     });
   }
