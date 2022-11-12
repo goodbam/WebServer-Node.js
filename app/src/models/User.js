@@ -12,10 +12,10 @@ class User {
     const body = this.body;
 
     try {
-      const { Username, Password } = await userStorage.getUserInfo(body.id);
+      const user = await userStorage.getUserInfo(body.id);
 
-      if (Username) {
-        if (Username === body.id && Password === body.psword) {
+      if (user) {
+        if (user.Username === body.id && user.Password === body.psword) {
           return { success: true };
         }
         return { success: false, msg: "비밀번호가 틀렸습니다." };

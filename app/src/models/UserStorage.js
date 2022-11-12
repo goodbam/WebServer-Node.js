@@ -6,7 +6,7 @@ class UserStorage {
   /** SELECT * FROM users WHERE id = {id} */
   async getUserInfo(id) {
     return new Promise((resolve, reject) => {
-      const sql = "SELECT * FROM test_user1 WHERE Username = ?;";
+      const sql = "SELECT * FROM test_user WHERE Username = ?;";
 
       db.query(sql, [id], (err, data) => {
         if (err) reject(`${err}`);
